@@ -4,7 +4,7 @@ import RandomPlanet from '../RandomPlanet/RandomPlanet';
 
 const App = () =>{
     return(
-        <div>
+        <div className='container'>
         <Header />
         <RandomPlanet />
         </div>
