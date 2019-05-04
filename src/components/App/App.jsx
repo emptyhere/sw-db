@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../Header/Header'
 import RandomPlanet from '../RandomPlanet/RandomPlanet';
 import ItemList from '../ItemList/ItemList';
-import PersonDetails from '../PersonDetailes/PersonDetailes';
+import PersonDetailes from '../PersonDetailes/PersonDetailes';
 
 export default class App extends React.Component{
   
@@ -22,7 +22,7 @@ export default class App extends React.Component{
         <Header />
         <RandomPlanet />
         <ItemList onItemSelected={this.onItemSelected}/>
-        <PersonDetails personId={this.state.selectedPerson}/>
+        <PersonDetailes personId={this.state.selectedPerson}/>
         </div>
     );
     };
