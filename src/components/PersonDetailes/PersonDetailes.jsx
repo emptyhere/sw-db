@@ -51,7 +51,7 @@ export default class PersonDetails extends React.Component{
                  className={style.personImg}
                  />
 
-                 <div>
+                 <div className='col auto'>
                      <h4>{name}</h4>
                      <ul className='list-group list-group-flush'>
                          <li className='list-group-item'>

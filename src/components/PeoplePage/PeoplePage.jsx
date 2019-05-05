@@ -4,7 +4,6 @@ import PersonDetailes from './../PersonDetailes/PersonDetailes';
 
 export default class PeoplePage extends React.Component{
     state={
-        selectedPerson:3,
         hasError: false
     };
 
@@ -26,11 +25,11 @@ export default class PeoplePage extends React.Component{
             <div className='row auto'>
 
             <div className='col auto'>
-               <ItemList onItemSelected={this.onItemSelected}/>
+               <ItemList onItemSelected={this.props.onItemSelected}/>
                </div>
 
                <div className='col auto'>
-               <PersonDetailes personId={this.state.selectedPerson}/>
+               <PersonDetailes personId={this.props.personId}/>
                </div>
                
            </div>

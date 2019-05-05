@@ -7,7 +7,7 @@ import PeoplePage from '../PeoplePage/PeoplePage';
 export default class App extends React.Component{
   
     state = {
-        //selectedPerson: null,
+        selectedPerson: null,
         hasError: false
     };
 
@@ -30,9 +30,10 @@ export default class App extends React.Component{
         <div className='container'>
         <Header />
         <RandomPlanet />
-        <PeoplePage />
-        <PeoplePage />
-        <PeoplePage />
+        <PeoplePage onItemSelected={this.onItemSelected} 
+        personId={this.state.selectedPerson}
+        />
+      
 
         </div>
     );
