@@ -1,5 +1,6 @@
 import React from 'react';
 import SwapiService from '../../services/SwapiService';
+import style from './PersonDetailes.module.css';
 
 export default class PersonDetails extends React.Component{
    
@@ -44,38 +45,40 @@ export default class PersonDetails extends React.Component{
         } = this.state.person;
 
         return(
-            <div>
+            <div className='jumbotron row auto'>
                 <img src={`https://starwars-visualguide.com/assets/img/characters/${this.props.personId}.jpg`}
-                 alt="character"/>
+                 alt="character"
+                 className={style.personImg}
+                 />
 
                  <div>
-                     <h4>{name} {this.props.personId}</h4>
-                     <ul>
-                         <li>
+                     <h4>{name}</h4>
+                     <ul className='list-group list-group-flush'>
+                         <li className='list-group-item'>
                              <span>Gender: </span>
                              <span>{gender}</span>
                          </li>
-                         <li>
+                         <li className='list-group-item'>
                              <span>Birth year: </span>
                              <span>{birth_year}</span>
                          </li>
-                         <li>
+                         <li className='list-group-item'>
                              <span>Eye color: </span>
                              <span>{eye_color}</span>
                          </li>
-                         <li>
+                         <li className='list-group-item'>
                              <span>Height: </span>
                              <span>{height}</span>
                          </li>
-                         <li>
+                         <li className='list-group-item'>
                              <span>Mass: </span>
                              <span>{mass}</span>
                          </li>
-                         <li>
+                         <li className='list-group-item'>
                              <span>Hair color: </span>
                              <span>{hair_color}</span>
                          </li>
-                         <li>
+                         <li className='list-group-item'>
                              <span>Skin color: </span>
                              <span>{skin_color}</span>
                          </li>

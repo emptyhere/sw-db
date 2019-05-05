@@ -2,6 +2,7 @@ import React from 'react';
 import SwapiService from '../../services/SwapiService';
 import Loading from './../Loading/Loading';
 import ErrorIndicator from './../ErrorIndicator/ErrorIndicator';
+import style from './RandomPlanet.module.css';
 
 export default class RandomPlanet extends React.Component{
 
@@ -15,7 +16,12 @@ export default class RandomPlanet extends React.Component{
 
     componentDidMount(){
         this.updatePlanet();
-        setInterval(this.updatePlanet, 2500);
+        this.interval = setInterval(this.updatePlanet, 7500);
+    }
+
+    //memory leak fix
+    componentWillUnmount(){
+        clearInterval(this.interval);
     }
 
     onPlanetLoaded = (planet) =>{
@@ -51,7 +57,7 @@ export default class RandomPlanet extends React.Component{
         const content = hasData ? <PlanetView planet={planet}/>:null;
 
         return(
-            <div className='jumbotron rounded'>
+            <div className='jumbotron'>
             {loader}
             {content}
             {errorMsg}
@@ -67,21 +73,28 @@ const PlanetView = ({planet}) => {
 
     return(
         <React.Fragment>
-          <span>{name}</span>
+            <div className='row auto'>
                 <img src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
-                alt={`${name}`}
+                alt='Planet'
+                className={style.planetImg}
                 />
-                <ul className='list-group list-group-flush'>
-                    <li className='list-group-item'>
-                        <span>Population:{population}</span>
+                <div className='col auto'>
+                 <ul className='list-group list-group-flush'>
+                   <li className='list-group-item'>
+                       {name}
                     </li>
                     <li className='list-group-item'>
-                        <span>Rotation Period:{rotationPeriod}</span>
+                        <span>Population: {population}</span>
                     </li>
                     <li className='list-group-item'>
-                        <span>Diameter:{diameter}</span>
+                        <span>Rotation Period: {rotationPeriod}</span>
                     </li>
-                </ul>
+                    <li className='list-group-item'>
+                        <span>Diameter: {diameter}</span>
+                    </li>
+                 </ul>
+                </div>
+             </div>
         </React.Fragment>
     );
 

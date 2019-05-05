@@ -44,7 +44,7 @@ export default class ItemList extends React.Component{
         const items = this.renderItems(peopleList);
 
         return(
-            <ul className='list-group'>
+            <ul className='list-group list-group-flush'>
              {items}
             </ul>
         );
