@@ -1,12 +1,12 @@
 import  React  from 'react';
-import styles from './Loading.module.css';
+import  './Loading.module.css';
 
 const Loading = () =>{
     return(
-<div className={`${styles.lds_css}
- ${styles.ng_scope}`}>
+<div className='lds_css
+ ng_scope'>
  <div 
- className={styles.lds_rolling}>
+ className='lds_rolling'>
    <div></div>
    <div></div>
  </div>

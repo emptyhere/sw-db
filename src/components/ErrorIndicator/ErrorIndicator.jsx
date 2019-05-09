@@ -1,11 +1,20 @@
-import  React  from 'react';
+import React from 'react';
 
-const ErrorIndicator = () =>{
-    return(
-        <div>
-            ERROR: something goes wrong..
-        </div>
-    );
-}
+import './ErrorIndicator.module.css';
+import icon from './death-star.png';
+
+const ErrorIndicator = () => {
+  return (
+    <div className="error-indicator">
+      <img src={icon} alt="error icon"/>
+      <span className="boom">ERROR!</span>
+      <span>
+        something has gone terribly wrong
+      </span>
+      <span>
+      </span>
+    </div>
+  );
+};
 
 export default ErrorIndicator;

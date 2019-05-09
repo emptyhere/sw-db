@@ -1,38 +1,49 @@
-import React from 'react';
-import ItemList from './../ItemList/ItemList';
-import PersonDetailes from './../PersonDetailes/PersonDetailes';
+import React, { Component } from 'react';
 
-export default class PeoplePage extends React.Component{
-    state={
-        hasError: false
-    };
+import ItemList from '../ItemList/ItemList';
+import PersonDetails from '../PersonDetails/PersonDetails';
+import ErrorIndicator from '../ErrorIndicator/ErrorIndicator';
 
-    componentDidCatch(error, info){
-        this.setState({hasError:true});
-    };
+import './PeoplePage.module.css';
+import SwapiService from "../../services/SwapiService";
 
-    onPersonSelected = (selectedPerson) =>{
-        this.setState({
-            selectedPerson
-        });
-    };
+export default class PeoplePage extends Component {
 
-    render(){
-        if (this.state.hasError){
-            return <span>Error</span>;
-        }
-        return (
-            <div className='row auto'>
+  swapiService = new SwapiService();
 
-            <div className='col auto'>
-               <ItemList onItemSelected={this.props.onItemSelected}/>
-               </div>
+  state = {
+    selectedPerson: null,
+    hasError: false
+  };
 
-               <div className='col auto'>
-               <PersonDetailes personId={this.props.personId}/>
-               </div>
-               
-           </div>
-        );
+  componentDidCatch(error, info) {
+
+    this.setState({
+      hasError: true
+    });
+  }
+
+  onPersonSelected = (selectedPerson) => {
+    this.setState({ selectedPerson });
+  };
+
+  render() {
+
+    if (this.state.hasError) {
+      return <ErrorIndicator />;
     }
+
+    return (
+      <div className="row mb2">
+        <div className="col-md-6">
+          <ItemList
+            onItemSelected={this.onPersonSelected}
+            getData={this.swapiService.getAllPeople}/>
+        </div>
+        <div className="col-md-6">
+          <PersonDetails personId={this.state.selectedPerson} />
+        </div>
+      </div>
+    );
+  }
 }

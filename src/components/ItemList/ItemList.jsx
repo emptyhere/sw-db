@@ -1,52 +1,52 @@
-import React from 'react';
-import SwapiService from '../../services/SwapiService';
-import Loading from '../Loading/Loading';
+import React, { Component } from 'react';
 
-export default class ItemList extends React.Component{
+import './ItemList.module.css';
+import Loading from "../Loading/Loading";
 
-    swapiService = new SwapiService();
+export default class ItemList extends Component {
 
-    state = {
-        peopleList: null
-    };
+  state = {
+    itemList: null
+  };
 
-    componentDidMount(){
-        this.swapiService.getAllPeople()
-        .then((peopleList)=>{
-            this.setState({
-                peopleList
-            });
+  componentDidMount() {
+
+    const { getData } = this.props;
+
+    getData()
+      .then((itemList) => {
+        this.setState({
+          itemList
         });
+      });
+  }
 
+  renderItems(arr) {
+    return arr.map(({id, name}) => {
+      return (
+        <li className="list-group-item"
+            key={id}
+            onClick={() => this.props.onItemSelected(id)}>
+          {name}
+        </li>
+      );
+    });
+  }
+
+  render() {
+
+    const { itemList } = this.state;
+
+    if (!itemList) {
+      return <Loading />;
     }
 
-    renderItems(arr){
-        return arr.map(({id, name}) => {
-            return(
-                <li className='list-group-item'
-                key={id}
-                onClick={()=>this.props.onItemSelected(id)}
-                >
-                {name}
-                </li>
-            );
-        });
-    }
+    const items = this.renderItems(itemList);
 
-
-    render(){
-
-        const {peopleList} = this.state;
-        
-        if (!peopleList) {
-            return <Loading />;
-        }
-        const items = this.renderItems(peopleList);
-
-        return(
-            <ul className='list-group list-group-flush'>
-             {items}
-            </ul>
-        );
-    }
+    return (
+      <ul className="item-list list-group">
+        {items}
+      </ul>
+    );
+  }
 }
