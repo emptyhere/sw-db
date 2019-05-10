@@ -43,7 +43,8 @@ export default class PersonDetails extends Component {
 
     const { id, name, gender,
               birthYear, eyeColor,
-            height, mass } = person;
+            height, mass, 
+          skin_color, hair_color } = person;
 
     return (
       <div className="person-details card">
@@ -54,26 +55,35 @@ export default class PersonDetails extends Component {
         <div className="card-body">
           <h4>{name}</h4>
           <ul className="list-group list-group-flush">
+  
             <li className="list-group-item">
-              <span className="term">Gender</span>
+              <span className="term">Gender:</span>
               <span>{gender}</span>
             </li>
             <li className="list-group-item">
-              <span className="term">Birth Year</span>
-              <span>{birthYear}</span>
-            </li>
-            <li className="list-group-item">
-              <span className="term">Eye Color</span>
-              <span>{eyeColor}</span>
-            </li>
-            <li className="list-group-item">
-              <span className="term">Mass</span>
+              <span className="term">Mass:</span>
               <span>{mass}</span>
             </li>
             <li className="list-group-item">
-              <span className="term">Height</span>
+              <span className="term">Height:</span>
               <span>{height}</span>
+            </li>     
+            <li className="list-group-item">
+              <span className="term">Eye Color:</span>
+              <span>{eyeColor}</span>
             </li>
+            <li className="list-group-item">
+              <span className="term">Skin Color:</span>
+              <span>{skin_color}</span>
+            </li>
+            <li className="list-group-item">
+              <span className="term">Hair Color:</span>
+              <span>{hair_color}</span>
+            </li>
+            <li className="list-group-item">
+              <span className="term">Birth Year:</span>
+              <span>{birthYear}</span>
+            </li> 
           </ul>
         </div>
       </div>
