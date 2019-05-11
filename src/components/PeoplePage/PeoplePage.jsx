@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import ItemList from '../ItemList/ItemList';
-import PersonDetails from '../PersonDetails/PersonDetails';
+import PersonDetails from '../ItemDetails/ItemDetails';
 import ErrorIndicator from '../ErrorIndicator/ErrorIndicator';
 
 import './PeoplePage.module.css';

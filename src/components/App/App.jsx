@@ -5,11 +5,13 @@ import RandomPlanet from '../RandomPlanet/RandomPlanet';
 import ErrorIndicator from '../ErrorIndicator/ErrorIndicator';
 import PeoplePage from '../PeoplePage/PeoplePage';
 
-//import style from './App.module.css';
 import ItemList from "../ItemList/ItemList";
-import PersonDetails from "../PersonDetails/PersonDetails";
 import SwapiService from "../../services/SwapiService";
 import './App.module.css';
+import ErrorBoundry from '../ErrorBoundry/ErrorBoundry';
+import Row from '../Row/Row';
+import ItemDetails, {Record} from '../ItemDetails/ItemDetails';
+
 
 export default class App extends Component {
 
@@ -41,8 +43,35 @@ export default class App extends Component {
     const planet = this.state.showRandomPlanet ?
       <RandomPlanet/> :
       null;
+    
+    const {getPerson, getStarship,
+    getPersonImage, getPlanetImage,
+    getStarshipImage} = this.swapiService;
+
+    const personDetails = (
+      <ItemDetails itemId={3}
+      getData={getPerson}
+      getImageUrl={getPersonImage}
+      >
+      
+      <Record field='gender' label='Gender'/>
+
+      </ItemDetails>
+    );
+
+    const starshipDetails = (
+      <ItemDetails itemId={5}
+      getData={getStarship}
+      getImageUrl={getStarshipImage}
+      >
+
+      <Record field='model' label='Model'/>
+
+      </ItemDetails>
+    );
 
     return (
+      <ErrorBoundry>
       <div>
         <Header />
         { planet }
@@ -56,7 +85,10 @@ export default class App extends Component {
         </div>
         <PeoplePage />
 
+        <Row left={personDetails} right={starshipDetails}/>
+
       </div>
+      </ErrorBoundry>
     );
   }
 }
