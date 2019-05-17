@@ -5,13 +5,22 @@ import RandomPlanet from '../RandomPlanet/RandomPlanet';
 import ErrorIndicator from '../ErrorIndicator/ErrorIndicator';
 import PeoplePage from '../PeoplePage/PeoplePage';
 
-import ItemList from "../ItemList/ItemList";
 import SwapiService from "../../services/SwapiService";
 import './App.module.css';
 import ErrorBoundry from '../ErrorBoundry/ErrorBoundry';
 import Row from '../Row/Row';
 import ItemDetails, {Record} from '../ItemDetails/ItemDetails';
+import {
+  PersonList,
+  PlanetList,
+  StarshipList
+} from '../sw-components/Item-lists';
 
+import {
+  PersonDetails,
+  PlanetDetails,
+  StarshipDetails
+} from '../sw-components/Detailes';
 
 export default class App extends Component {
 
@@ -83,9 +92,24 @@ export default class App extends Component {
             Toggle Random Planet
           </button>
         </div>
-        <PeoplePage />
 
-        <Row left={personDetails} right={starshipDetails}/>
+
+
+        <PersonList>
+           {({name}) => <span>{name}</span>}
+        </PersonList>
+
+        <StarshipList>
+           {({name}) => <span>{name}</span>}
+        </StarshipList>
+
+        <PlanetList>
+           {({name}) => <span>{name}</span>}
+        </PlanetList>
+
+        <PersonDetails itemId={11}/>
+        <PlanetDetails itemId={11}/>
+        <StarshipDetails itemId={11}/>
 
       </div>
       </ErrorBoundry>
