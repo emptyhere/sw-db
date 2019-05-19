@@ -3,13 +3,12 @@ import React, { Component } from 'react';
 import Header from '../Header/Header';
 import RandomPlanet from '../RandomPlanet/RandomPlanet';
 import ErrorIndicator from '../ErrorIndicator/ErrorIndicator';
-import PeoplePage from '../PeoplePage/PeoplePage';
 
 import SwapiService from "../../services/SwapiService";
 import './App.module.css';
 import ErrorBoundry from '../ErrorBoundry/ErrorBoundry';
-import Row from '../Row/Row';
 import ItemDetails, {Record} from '../ItemDetails/ItemDetails';
+
 import {
   PersonList,
   PlanetList,
@@ -21,6 +20,10 @@ import {
   PlanetDetails,
   StarshipDetails
 } from '../sw-components/Detailes';
+
+import {
+  SwapiServiceProvider
+} from '../swapi-service-context/SwapiServiceContext';
 
 export default class App extends Component {
 
@@ -81,7 +84,7 @@ export default class App extends Component {
 
     return (
       <ErrorBoundry>
-      <div>
+      <SwapiServiceProvider value={this.swapiService}>
         <Header />
         { planet }
 
@@ -93,25 +96,19 @@ export default class App extends Component {
           </button>
         </div>
 
+        <PersonList/>
+  
+        <StarshipList/>
+     
+        <PlanetList/>
 
-
-        <PersonList>
-           {({name}) => <span>{name}</span>}
-        </PersonList>
-
-        <StarshipList>
-           {({name}) => <span>{name}</span>}
-        </StarshipList>
-
-        <PlanetList>
-           {({name}) => <span>{name}</span>}
-        </PlanetList>
 
         <PersonDetails itemId={11}/>
-        <PlanetDetails itemId={11}/>
-        <StarshipDetails itemId={11}/>
 
-      </div>
+        <PlanetDetails itemId={11}/>
+        
+        <StarshipDetails itemId={11}/>
+        </SwapiServiceProvider>
       </ErrorBoundry>
     );
   }
