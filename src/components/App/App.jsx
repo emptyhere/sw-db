@@ -12,6 +12,12 @@ import PlanetsPage from './../Pages/PlanetsPage/PlanetsPage';
 import StarshipsPage from './../Pages/StarshipsPage/StarshipsPage';
 
 
+import PersonDetails from '../sw-components/Person-Details';
+
+import PlanetDetails from '../sw-components/Planet-Details';
+
+import StarshipDetails from '../sw-components/Starship-Details';
+
 import {
   SwapiServiceProvider
 } from '../swapi-service-context/SwapiServiceContext';
