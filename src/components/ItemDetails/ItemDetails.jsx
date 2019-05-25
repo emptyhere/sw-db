@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import './ItemDetails.module.css';
+import SwapiService from "../../services/SwapiService";
 
 const Record = ({item, field, label}) => {
   return(
@@ -25,9 +26,7 @@ export default class ItemDetails extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.itemId !== prevProps.itemId ||
-      this.props.getData !== prevProps.getData ||
-      this.props.getImageUrl !== prevProps.getImageUrl) {
+    if (this.props.itemId !== prevProps.itemId) {
       this.updatePerson();
     }
   }
@@ -52,7 +51,10 @@ export default class ItemDetails extends Component {
       return <span>Select a item from a list</span>;
     }
 
-    const { name} = item;
+    const { id, name, gender,
+              birthYear, eyeColor,
+            height, mass, 
+          skin_color, hair_color } = item;
 
     return (
       <div className="person-details card">
