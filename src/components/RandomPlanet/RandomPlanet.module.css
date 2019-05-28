@@ -1,25 +1,25 @@
-.random-planet {
+.randomPlanet {
   display: flex;
   padding: 1rem;
   border: 1px solid #444;
   margin-bottom: 1rem;
 }
 
-.random-planet .planet-image {
-  width: 150px;
-  height: 150px;
+.randomPlanet .planetImage {
+  width: 200px;
+  height: 200px;
   border-radius: 10px;
   margin-right: 1rem;
 }
 
-.random-planet .list-group {
+.random-Planet .list-group {
   margin: 1rem 0 0 1rem;
 }
 
-.random-planet .list-group-item {
+.randomPlanet .list-group-item {
   padding: .25rem;
 }
 
-.random-planet .list-group-item .term {
+.randomPlanet .list-group-item .term {
   margin-right: .5rem;
 }

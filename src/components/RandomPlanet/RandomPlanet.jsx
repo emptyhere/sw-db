@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 
+import PropTypes from 'prop-types';
+
 import Loading from '../Loading/Loading';
 import ErrorIndicator from '../ErrorIndicator/ErrorIndicator';
 import SwapiService from '../../services/SwapiService';
 
-import './RandomPlanet.module.css';
+import styles from './RandomPlanet.module.css';
 
 export default class RandomPlanet extends Component {
 
@@ -16,8 +18,9 @@ export default class RandomPlanet extends Component {
   };
 
   componentDidMount() {
+    const {updateInterval} = this.props
     this.updatePlanet();
-    this.interval = setInterval(this.updatePlanet, 10000);
+    this.interval = setInterval(this.updatePlanet, updateInterval);
   }
 
   componentWillUnmount() {
@@ -57,7 +60,7 @@ export default class RandomPlanet extends Component {
     const content = hasData ? <PlanetView planet={planet}/> : null;
 
     return (
-      <div className="random-planet jumbotron rounded">
+      <div className={`${styles.randomPlanet} jumbotron rounded`}>
         {errorMessage}
         {spinner}
         {content}
@@ -73,7 +76,7 @@ const PlanetView = ({ planet }) => {
 
   return (
     <React.Fragment>
-      <img className="planet-image"
+      <img className={styles.planetImage}
            src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
            alt="planet" />
       <div>
@@ -97,5 +100,11 @@ const PlanetView = ({ planet }) => {
   );
 };
 
+RandomPlanet.defaultProps={
+  updateInterval: 10000
+};
 
+RandomPlanet.propTypes = {
+  updateInterval: PropTypes.number
+};
 
